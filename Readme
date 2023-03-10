@@ -1,0 +1,86 @@
+322CC Suiu Ana-Maria
+
+Am ales sa folosesc libraria nlohmann pentru parsare deoarece este usor
+de folosit. Eu am creat un obiect de tip json cu campurile dorite si 
+folosit functia dump() pentru a serializa jsonul, obtinand obiectul
+sub forma de string.
+
+register:
+Am citit username si parola cu getline pentru a putea citi cu tot cu
+spatii. Tratez si cazul cand apar spatii. Printr-un POST request le trimit
+la server si primesc si raspuns inapoi. Daca in raspuns avem status 201
+inseamna ca s-a executat cu succes comanda dorita. Daca mesajul de la
+server contine eroare, o afisez. Daca nu, inseamna ca avem status 429
+si sunt prea multe cereri.
+
+login:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie).
+Transmit credentialele printr-un POST request la server si primesc si raspuns
+inapoi. Daca in raspuns avem status 200 inseamna ca s-a executat cu succes
+comanda dorita si afisez mesaj. Totodata extrag cookieul din raspunsul dat de
+server. Daca mesajul de la server contine eroare, o afisez. Daca nu, 
+inseamna ca avem status 429 si sunt prea multe cereri.
+
+enter_library:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie).
+Fac o cerere de tip GET request pentru a-mi valida accesul. Primesc raspuns
+de la server si imi extrag tokenul din acest raspuns. Daca in raspuns avem 
+status 200 inseamna ca s-a executat cu succes comanda dorita si afisez mesaj.
+Daca mesajul de la server contine eroare, o afisez. Daca nu, 
+inseamna ca avem status 429 si sunt prea multe cereri.
+
+get_books:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie)
+si daca avem acces la librarie(avem token). Fac o cerere de tip GET request
+la server pentru a primi detaliile despre carti. Primesc raspuns de la server.
+Daca in raspuns avem status 200 inseamna ca s-a executat cu succes comanda 
+dorita afisez mesaj si detaliile cartilor primite prin raspuns. Daca mesajul
+de la server contine eroare, o afisez. Daca nu, inseamna ca avem status 429 
+si sunt prea multe cereri.
+
+get_book:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie)
+si daca avem acces la librarie(avem token).Citesc id-ul si tratez cazul daca 
+acesta este sau nu un numar valid. Daca nu este afisez mesaj de eroare si dau 
+skip la urmatoarea comanda. Trimit la server o cerere de tip Get pentru a
+putea primi detaliile despre cartea cu id-ul respectiv. Primesc raspuns inapoi
+de la server.
+Daca in raspuns avem status 200 inseamna ca s-a executat cu succes comanda 
+dorita afisez mesaj si detaliile cartii primite prin raspuns. Daca mesajul
+de la server contine eroare, o afisez. Daca nu, inseamna ca avem status 429 
+si sunt prea multe cereri.
+
+add_book:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie)
+si daca avem acces la librarie(avem token). Se citesc de la tastatura 
+informatiile cartii pe care vrem sa o adaugam. Se trateaza cazul special daca
+page_count este numar. Daca nu este afisez mesaj de eroare si dau 
+skip la urmatoarea comanda. Trimit la server o cerere de tip POST pentru a
+putea trimite informatiile cartii. Primesc raspuns inapoi de la server.
+Daca in raspuns avem status 200 inseamna ca s-a executat cu succes comanda 
+dorita si afisez mesaj. Daca mesajul de la server contine eroare, o afisez. 
+Daca nu, inseamna ca avem status 429 si sunt prea multe cereri.
+
+delete_book:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie)
+si daca avem acces la librarie(avem token).Citesc id-ul si tratez cazul daca 
+acesta este sau nu un numar valid. Daca nu este afisez mesaj de eroare si dau 
+skip la urmatoarea comanda. Trimit la server o cerere de tip DELETE pentru a
+putea sterge detaliile cartii cu id-ul respectiv. Primesc raspuns inapoi
+de la server.
+Daca in raspuns avem status 200 inseamna ca s-a executat cu succes comanda 
+dorita si afisez mesaj. Daca mesajul de la server contine eroare, o afisez. 
+Daca nu, inseamna ca avem status 429 si sunt prea multe cereri.
+
+logout:
+Se verifica daca utilizatorul este deja logat pe un cont(daca avem cookie).
+Se trimite mesaj la server de tip GET request pentru a putea valida delogarea.
+Se primeste raspuns de la server.
+Daca in raspuns avem status 200 inseamna ca s-a executat cu succes comanda 
+dorita afisez mesaj si golesc tokenul si cookieul. Daca mesajul de la server 
+contine eroare, o afisez. Daca nu, inseamna ca avem status 429 si sunt prea 
+multe cereri.
+
+exit:
+Inchid conexiunea cu serverul si ies din while.
+
